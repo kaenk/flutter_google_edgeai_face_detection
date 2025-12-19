@@ -2,13 +2,13 @@ group = "com.example.flutter_face_detector"
 version = "1.0-SNAPSHOT"
 
 buildscript {
-    ext.kotlin_version = "1.9.23"
+    ext.kotlin_version = "2.1.0"
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:8.3.2")
+        classpath("com.android.tools.build:gradle:8.9.1")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
@@ -63,8 +63,15 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'com.google.mediapipe:tasks-vision:0.10.26'
+    }
+}
+
 dependencies {
-    implementation 'com.google.mediapipe:tasks-vision:0.20230731'
+    // MediaPipe Tasks Vision - 强制使用 0.10.26 版本（支持 16kb 页面大小）
+    implementation 'com.google.mediapipe:tasks-vision:0.10.26'
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.0.0")
