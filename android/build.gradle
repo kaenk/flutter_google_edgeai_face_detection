@@ -63,15 +63,10 @@ android {
     }
 }
 
-configurations.all {
-    resolutionStrategy {
-        force 'com.google.mediapipe:tasks-vision:0.10.26'
-    }
-}
 
 dependencies {
     // MediaPipe Tasks Vision - 强制使用 0.10.26 版本（支持 16kb 页面大小）
-    implementation 'com.google.mediapipe:tasks-vision:0.10.26'
+    implementation("com.google.mediapipe:tasks-vision:0.10.29")           
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.mockito:mockito-core:5.0.0")
